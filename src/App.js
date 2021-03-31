@@ -1,25 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import { Component } from 'react';
+// Hvorfor bruger jeg class isteddet for en funktion?
+ 
+class App extends Component {
+  constructor() {
+    super();
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    this.state = {
+     monster: [
+      {
+        name: 'Nr 3',
+        id: 'one'
+      },
+      {
+        name: 'Nr 2',
+        id: 'two'
+      },
+      {
+        name: 'Nr 3',
+        id: 'tree'
+      }
+     ]
+    };
+  }
+  render() {
+    return (
+      <div className='App'>
+        {this.state.monster.map(monster => (
+          <p key={monster.id}>{monster.name}</p>
+        ))}
+      </div>
+    );
+  }
 }
-
 export default App;
