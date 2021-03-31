@@ -1,33 +1,27 @@
+import React, { Component } from 'react';
 import './App.css';
-import { Component } from 'react';
-// Hvorfor bruger jeg class isteddet for en funktion?
+// Life cykel API Hreff
  
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-     monster: [
-      {
-        name: 'Nr 3',
-        id: 'one'
-      },
-      {
-        name: 'Nr 2',
-        id: 'two'
-      },
-      {
-        name: 'Nr 3',
-        id: 'tree'
-      }
-     ]
+     monsters: []
     };
   }
+
+  componentDidMount(){
+     fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(users => this.setState({monsters: users}));
+  }
+
   render() {
     return (
       <div className='App'>
-        {this.state.monster.map(monster => (
-          <p key={monster.id}>{monster.name}</p>
+        {this.state.monsters.map(monsters => (
+          <p key={monsters.id}>{monsters.name}</p>
         ))}
       </div>
     );
