@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { CardList } from './components/card-list/card-list';
 import './App.css';
 // Life cykel API Hreff
  
@@ -19,10 +20,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className='App'>
-        {this.state.monsters.map(monsters => (
-          <p key={monsters.id}>{monsters.name}</p>
-        ))}
+      <div className='App'> 
+        <CardList monsters={this.state.monsters}></CardList>
       </div>
     );
   }
