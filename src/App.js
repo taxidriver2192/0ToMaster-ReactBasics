@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { CardList } from './components/card-list/card-list';
+import { CardList } from './components/card-list/card-list.jsx';
+import { SearchBox } from './components/search-box/search-box.component.jsx'
 import './App.css';
 // Life cykel API Hreff
  
@@ -25,10 +26,7 @@ class App extends Component {
       monster.name.toLowerCase().includes(searchField.toLowerCase()))
     return (
       <div className='App'> 
-        <input type='search'
-          placeholder='Search here!' 
-          onChange={e => this.setState({ searchField: e.target.value})}
-        />
+        <SearchBox placeholder='Search here!' handleChange={e => this.setState({ searchField: e.target.value})}/>
         <CardList monsters={filteredMonsters}></CardList>
       </div>
     );
